@@ -66,6 +66,9 @@ linters.setup {
     {
         command = "eslint_d",
         filetypes = { "typescriptreact", "typescript", "javascript", "typescript.tsx", "javascript.jsx" },
+        condition = function(utils)
+          return utils.root_has_file(".eslintrc.js", ".eslintrc", ".eslintrc.json") -- change file extension if you use something else
+        end
     },
 }
 
