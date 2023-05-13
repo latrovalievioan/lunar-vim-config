@@ -20,7 +20,8 @@ vim.opt.hlsearch = false        -- highlight all matches on previous search patt
 -- lvim.lsp.installer.setup.automatic_installation = true
 vim.diagnostic.config({ virtual_text = false })
 -- vim.opt.updatetime = 1
---
+
+---- DASHBOARD PICTURE ----
 lvim.builtin.alpha.dashboard.section.header.val = {
   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠿⠷⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠈⠛⢷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣶⠿⠛⠉⠉⠻⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
@@ -49,6 +50,7 @@ vim.keymap.set("n", "-", "<C-x>")                                               
 vim.keymap.set("i", "<C-c>", "<Esc>")                                                          -- use ctrl+c for esc
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"                                    -- cycle buffer next
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"                                    -- cycle buffer prev
+vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
 
 
 ---- TREESITTER ----
@@ -98,6 +100,27 @@ lvim.lsp.null_ls.setup = {
 }
 
 
+-- Floating cmdline
+require('fine-cmdline').setup({
+  cmdline = {
+    enable_keymaps = true,
+    smart_history = true,
+    prompt = ':'
+  },
+  popup = {
+    position = {
+      row = '50%',
+      col = '50%',
+    },
+    size = {
+      width = '40%',
+    },
+    border = {
+      style = 'rounded',
+    },
+  },
+})
+
 ---- PLUGINS ----
 lvim.plugins = {
   {
@@ -117,4 +140,10 @@ lvim.plugins = {
       require("nvim-ts-autotag").setup()
     end,
   },
+  {
+    'VonHeikemen/fine-cmdline.nvim',
+    dependencies = {
+      { 'MunifTanjim/nui.nvim' }
+    }
+  }
 }
