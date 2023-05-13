@@ -7,4 +7,4 @@ vim.keymap.set("n", "-", "<C-x>")                                               
 vim.keymap.set("i", "<C-c>", "<Esc>")                                                          -- use ctrl+c for esc
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"                                    -- cycle buffer next
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"                                    -- cycle buffer prev
-vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })                  -- floating commang line remap
