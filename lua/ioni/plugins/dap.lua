@@ -1,4 +1,6 @@
 local dap = require('dap')
+
+--in order for this to work - start chrome with --remote-debugging-port=9222
 dap.adapters.chrome = {
   type = "executable",
   command = "node",
